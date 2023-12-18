@@ -1,6 +1,6 @@
 const Participant = require("../schema/Participants");
 
-const createParticipants = async (req, res, next) => {
+const createParticipants = async (req, res) => {
     try {
       const { username, email } = req.body;
   
@@ -12,6 +12,7 @@ const createParticipants = async (req, res, next) => {
   
       res.status(201).json({ message: 'Participant added successfully' });
     } catch (error) {
+      res.status(500).json({ error: 'Internal Server Error' });
       next(error);
     }
 }
